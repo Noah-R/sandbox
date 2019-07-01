@@ -1,12 +1,13 @@
 from random import randint
 l=[]
-for i in range(40):
+num=int(input("number of items"))
+for i in range(num):
     l.append(randint(1, 1000))
 print(l)
 for a in range(len(l)):
     for b in range(len(l)):
         if l[a]<l[b]:
-            temp=l[a]
+            temp=l[a]20
             l[a]=l[b]
             l[b]=temp
 print(l)
