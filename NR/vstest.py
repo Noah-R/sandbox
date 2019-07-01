@@ -1,6 +1,6 @@
 from random import randint
 l=[]
-for i in range(50):
+for i in range(40):
     l.append(randint(1, 1000))
 print(l)
 for a in range(len(l)):
