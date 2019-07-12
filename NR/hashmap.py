@@ -2,7 +2,7 @@ class Node():
     def __init__(self, data):
         self.data=data
     def getData(self):
-        return data
+        return self.data
     def setData(self, data):
         self.data=data
         return None
