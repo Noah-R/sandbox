@@ -1,3 +1,6 @@
+class Tree():
+    def __init__(self):
+        
 class Node():
     def __init__(self, data):
         self.data=data
@@ -6,5 +9,3 @@ class Node():
     def setData(self, data):
         self.data=data
         return None
-print(hash(Node("aeroidarnseochiaerocdiaoerciaoei")))
-print(hash("woodly"))
