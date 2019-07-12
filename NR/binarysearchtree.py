@@ -30,7 +30,16 @@ class BinarySearchTree():
     def removeElement(self, element):
         pass
     def contains(self, element):
-        return True
+        while(True):
+            current=self.top
+            if(current.getData()==element):
+                return True
+            elif(current==None):
+                return False
+            elif(current.getData()<element):
+                current=current.getLeft()
+            elif(current.getData()>element):
+                current=current.getRight()
     def size(self):
         return self.size
     def __str__(self):
