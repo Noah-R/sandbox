@@ -11,4 +11,3 @@ for a in range(len(l)):
             l[a]=l[b]
             l[b]=temp
 print(l)
-//edit on 7/7/19
