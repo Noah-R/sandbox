@@ -28,7 +28,22 @@ class BinarySearchTree():
             else:
                 return False
     def removeElement(self, element):
-        pass
+        while(True):
+            current=self.top
+            if(current==None):
+                return False
+            elif(current.getData()==element):
+                #remove and restructure
+                return True
+            elif(current.getData()<element):
+                current=current.getLeft()
+            elif(current.getData()>element):
+                current=current.getRight()
+    """
+              4
+           2     6
+         1   3|5   7
+    """
     def contains(self, element):
         while(True):
             current=self.top
