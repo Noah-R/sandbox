@@ -104,6 +104,47 @@ class BinarySearchTree():
         text = ""
         layer = [self.top]
         nextlayer = []
+        going = True
+        layers = 0
+        while(going):
+            layers += 1
+            for item in layer:
+                if(item != None):
+                    nextlayer.append(item.getLeft())
+                    nextlayer.append(item.getRight())
+            layer = nextlayer
+            nextlayer = []
+            going = False
+            for item in layer:
+                if(item != None):
+                    going = True
+        layer = [self.top]
+        nextlayer = []
+        going = True
+        while(layers > 0):
+            for item in layer:
+                if(item == None):
+                    text += " "*(2**layers)
+                    text += "None"
+                    nextlayer.append(None)
+                    nextlayer.append(None)
+                else:
+                    text += " "*(2**layers)
+                    text += "N"+str(item)+"_"
+                    nextlayer.append(item.getLeft())
+                    nextlayer.append(item.getRight())
+            text += "\n"
+            layer = nextlayer
+            nextlayer = []
+            layers -= 1
+        return text
+
+    def textString():
+        if(self.size == 0):
+            return "Empty"
+        text = ""
+        layer = [self.top]
+        nextlayer = []
         while(len(layer) > 0):
             for item in layer:
                 text += str(item)+" with "+str(item.getLeft()) + \
@@ -114,7 +155,7 @@ class BinarySearchTree():
                     nextlayer.append(item.getRight())
             layer = nextlayer
             nextlayer = []
-        return str(text)
+        return text
 
 
 class Node():
