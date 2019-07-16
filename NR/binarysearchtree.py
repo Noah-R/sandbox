@@ -75,7 +75,7 @@ class BinarySearchTree():
                     self.size -= 1
                     return True
                 else:
-                    print("Something is seriously wrong - removeElement")
+                    print("Something is seriously wrong - cleanup on removeElement")
             elif(current.getData() < element):
                 parent = current
                 current = current.getRight()
@@ -159,5 +159,5 @@ tree.removeElement(19)
 print("Tree of size " + str(tree.getSize()))
 print(tree)
 
-
+# should do: tree traversal
 # can do: balancing function
