@@ -37,7 +37,7 @@ class BinarySearchTree():
             else:
                 return False
 
-    def removeElement(self, element):
+    def removeElement(self, element, remove=True):
         current = self.top
         parent = None
         while(True):
@@ -50,9 +50,10 @@ class BinarySearchTree():
                     while(current.getRight() != None):
                         current = current.getRight()
                     current = current.getData()
-                    self.removeElement(current)
+                    self.removeElement(current, False)
                     parent.setData(current)
-                    self.size -= 1
+                    if(remove):
+                        self.size -= 1
                     return True
                 elif(current.getRight() != None):
                     parent = current
@@ -60,17 +61,20 @@ class BinarySearchTree():
                     while(current.getLeft() != None):
                         current = current.getLeft()
                     current = current.getData()
-                    self.removeElement(current)
+                    self.removeElement(current, False)
                     parent.setData(current)
-                    self.size -= 1
+                    if(remove):
+                        self.size -= 1
                     return True
                 elif(parent.getData() > element):
                     parent.setLeft(None)
-                    self.size -= 1
+                    if(remove):
+                        self.size -= 1
                     return True
                 elif(parent.getData() < element):
                     parent.setRight(None)
-                    self.size -= 1
+                    if(remove):
+                        self.size -= 1
                     return True
                 else:
                     print("Something is seriously wrong - removeElement")
@@ -93,7 +97,7 @@ class BinarySearchTree():
             elif(current.getData() > element):
                 current = current.getRight()
 
-    def size(self):
+    def getSize(self):
         return self.size
 
     def __str__(self):
@@ -148,13 +152,13 @@ class Node():
 
 tree = BinarySearchTree()
 tree.addElements([41, 53, 37, 38, 24, 68, 19, 44, 42, 64, 50, 47, 52, 51])
-print("Tree of size " + str(tree.size()))
+print("Tree of size " + str(tree.getSize()))
 print(tree)
 tree.removeElement(53)
-print("Tree of size " + str(tree.size()))
+print("Tree of size " + str(tree.getSize()))
 print(tree)
 tree.removeElement(19)
-print("Tree of size " + str(tree.size()))
+print("Tree of size " + str(tree.getSize()))
 print(tree)
 
 
