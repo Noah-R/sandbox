@@ -37,7 +37,7 @@ class BinarySearchTree():
             else:
                 return False
 
-    def removeElement(self, element, remove=True):
+    def removeElement(self, element):
         current = self.top
         parent = None
         while(True):
@@ -45,36 +45,34 @@ class BinarySearchTree():
                 return False
             elif(current.getData() == element):
                 if(current.getLeft() != None):
+                    og = current
                     parent = current
                     current = current.getLeft()
                     while(current.getRight() != None):
+                        parent = current
                         current = current.getRight()
-                    current = current.getData()
-                    self.removeElement(current, False)
-                    parent.setData(current)
-                    if(remove):
-                        self.size -= 1
+                    og.setData(current.getData())
+                    parent.setRight(current.getLeft())
+                    self.size -= 1
                     return True
                 elif(current.getRight() != None):
+                    og = current
                     parent = current
                     current = current.getRight()
                     while(current.getLeft() != None):
+                        parent = current
                         current = current.getLeft()
-                    current = current.getData()
-                    self.removeElement(current, False)
-                    parent.setData(current)
-                    if(remove):
-                        self.size -= 1
+                    og.setData(current.getData())
+                    parent.setLeft(current.getRight())
+                    self.size -= 1
                     return True
                 elif(parent.getData() > element):
                     parent.setLeft(None)
-                    if(remove):
-                        self.size -= 1
+                    self.size -= 1
                     return True
                 elif(parent.getData() < element):
                     parent.setRight(None)
-                    if(remove):
-                        self.size -= 1
+                    self.size -= 1
                     return True
                 else:
                     print("Something is seriously wrong - removeElement")
