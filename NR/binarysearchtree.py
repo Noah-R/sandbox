@@ -139,7 +139,7 @@ class BinarySearchTree():
             layers -= 1
         return text
 
-    def textString():
+    def textString(self):
         if(self.size == 0):
             return "Empty"
         text = ""
