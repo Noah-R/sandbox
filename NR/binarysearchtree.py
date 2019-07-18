@@ -1,4 +1,5 @@
 from random import randint
+from random import choice
 
 
 class BinarySearchTree():
@@ -204,15 +205,17 @@ class Node():
 
 
 tree = BinarySearchTree()
-tree.addElements([41, 53, 37, 38, 24, 68, 19, 44, 42, 64, 50, 47, 52, 51])
-print("Tree of size " + str(tree.getSize()))
-print(tree)
-tree.removeElement(53)
-print("Tree of size " + str(tree.getSize()))
-print(tree)
-tree.removeElement(19)
-print("Tree of size " + str(tree.getSize()))
-print(tree)
+l = []
+for a in range(10):
+    l.append(randint(10, 99))
+tree.addElements(l)
+while(len(l) > 0):
+    print("Tree of size " + str(tree.getSize()))
+    print(tree)
+    x = choice(l)
+    tree.removeElement(x)
+    l.remove(x)
+    print("removed", x)
 
-# should do: tree traversal
+# can do: a real tree traversal
 # can do: balancing function
