@@ -121,18 +121,32 @@ class BinarySearchTree():
         layer = [self.top]
         nextlayer = []
         going = True
+        """              f5 31 63
+                         f4 15 31
+        _______n         f3 7 15
+        ___n_______n     f2 3 7
+        _n___n___n___n   f1 1 3
+        n_n_n_n_n_n_n_n  f0 0 1
+        l*2+1=mid
+        total length=2**layers
+        """
         while(layers > 0):
-            for item in layer:
-                if(item == None):
-                    text += " "*(2**layers)
-                    text += "None"
+            spaces = 0
+            for i in range(layers-1):
+                spaces = spaces*2+1
+            for item in range(len(layer)):
+                if(layer[item] == None):
+                    text += " "*2*spaces
+                    text += "NN"
                     nextlayer.append(None)
                     nextlayer.append(None)
                 else:
-                    text += " "*(2**layers)
-                    text += "N"+str(item)+"_"
-                    nextlayer.append(item.getLeft())
-                    nextlayer.append(item.getRight())
+                    text += " "*2*spaces
+                    text += str(layer[item])
+                    nextlayer.append(layer[item].getLeft())
+                    nextlayer.append(layer[item].getRight())
+                if(item == 0):
+                    spaces = spaces*2+1
             text += "\n"
             layer = nextlayer
             nextlayer = []
