@@ -49,23 +49,37 @@ class BinarySearchTree():
                     og = current
                     parent = current
                     current = current.getLeft()
+                    first = True
                     while(current.getRight() != None):
+                        first = False
                         parent = current
                         current = current.getRight()
                     og.setData(current.getData())
-                    parent.setRight(current.getLeft())
+                    if(first):
+                        parent.setLeft(current.getLeft())
+                    else:
+                        parent.setRight(current.getLeft())
                     self.size -= 1
                     return True
                 elif(current.getRight() != None):
                     og = current
                     parent = current
                     current = current.getRight()
+                    first = True
                     while(current.getLeft() != None):
+                        first = False
                         parent = current
                         current = current.getLeft()
                     og.setData(current.getData())
-                    parent.setLeft(current.getRight())
+                    if(first):
+                        parent.setRight(current.getRight())
+                    else:
+                        parent.setLeft(current.getRight())
                     self.size -= 1
+                    return True
+                elif(element == self.top.getData()):
+                    self.top = None
+                    self.size = 0
                     return True
                 elif(parent.getData() > element):
                     parent.setLeft(None)
@@ -213,9 +227,9 @@ while(len(l) > 0):
     print("Tree of size " + str(tree.getSize()))
     print(tree)
     x = choice(l)
+    print("removing", x)
     tree.removeElement(x)
     l.remove(x)
-    print("removed", x)
 
 # can do: a real tree traversal
 # can do: balancing function
