@@ -220,8 +220,10 @@ class Node():
 
 tree = BinarySearchTree()
 l = []
-for a in range(10):
-    l.append(randint(10, 99))
+while(len(l) < 12):
+    add = randint(10, 99)
+    if add not in l:
+        l.append(add)
 tree.addElements(l)
 while(len(l) > 0):
     print("Tree of size " + str(tree.getSize()))
