@@ -37,84 +37,36 @@ def octagonal(n):  # 19 to 58
 
 
 octs = []
+hepts=[]
+hexes=[]
+pents=[]
+squares=[]
+tris=[]
 for i in range(19, 59):
     num = octagonal(i)
-    octs.append([num % 100])
+    octs.append(num)
 for i in range(21, 64):
     num = heptagonal(i)
-    for j in range(len(octs)):
-        if(octs[j][0] == int(num/100)):
-            octs[j].append(num % 100)
+    hepts.append(num)
 for i in range(23, 71):
     num = hexagonal(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) > 1 and octs[j][1] == int(num/100)):
-            octs[j].append(num % 100)
+    hexes.append(num)
 for i in range(26, 82):
     num = pentagonal(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) > 2 and octs[j][2] == int(num/100)):
-            octs[j].append(num % 100)
+    pents.append(num)
 for i in range(32, 99):
     num = square(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) > 3 and octs[j][3] == int(num/100)):
-            octs[j].append(num % 100)
+    squares.append(num)
 for i in range(45, 141):
     num = triangle(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) > 4 and octs[j][4] == int(num/100)):
-            octs[j].append(num % 100)
-for i in range(19, 55):
-    num = octagonal(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) == 6 and octs[j][5] == int(num/100)):
-            print(octs[j], "Works")
+    tris.append(num)
 print("---")
-for item in octs:
-    if(len(item) == 6):
-        print(item)
-print("---")
-# alternatively
-
-octs = []
-for i in range(19, 59):
-    num = octagonal(i)
-    octs.append([int(num / 100)])
-for i in range(21, 64):
-    num = heptagonal(i)
-    for j in range(len(octs)):
-        if(octs[j][0] == int(num % 100)):
-            octs[j].append(int(num / 100))
-for i in range(23, 71):
-    num = hexagonal(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) > 1 and octs[j][1] == int(num % 100)):
-            octs[j].append(int(num / 100))
-for i in range(26, 82):
-    num = pentagonal(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) > 2 and octs[j][2] == int(num % 100)):
-            octs[j].append(int(num / 100))
-for i in range(32, 99):
-    num = square(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) > 3 and octs[j][3] == int(num % 100)):
-            octs[j].append(int(num / 100))
-for i in range(45, 141):
-    num = triangle(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) > 4 and octs[j][4] == int(num % 100)):
-            octs[j].append(int(num / 100))
-for i in range(19, 55):
-    num = octagonal(i)
-    for j in range(len(octs)):
-        if(len(octs[j]) == 6 and octs[j][5] == int(num % 100)):
-            print(octs[j], "Works")
-print("---")
-for item in octs:
-    if(len(item) == 6):
-        print(item)
+print(octs)
+print(hepts)
+print(hexes)
+print(pents)
+print(squares)
+print(tris)
         
 """This code theoretically checks them all but it takes too long and it doesn't work anyway
 for a in range(10, 100):
