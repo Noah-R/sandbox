@@ -35,12 +35,34 @@ def heptagonal(n):  # 21 to 63
 def octagonal(n):  # 19 to 58
     return n*(3*n-2)
 
+
 octs = []
-hepts=[]
-hexes=[]
-pents=[]
-squares=[]
-tris=[]
+hepts = []
+hexes = []
+pents = []
+squares = []
+tris = []
+works = [octs, hepts, hexes, pents, squares, tris]
+sequences = []
+for a in range(6):
+    for b in range(6):
+        for c in range(6):
+            for d in range(6):
+                for e in range(6):
+                    for f in range(6):
+                        l = [a]
+                        if(b not in l):
+                            l.append(b)
+                        if(c not in l):
+                            l.append(c)
+                        if(d not in l):
+                            l.append(d)
+                        if(e not in l):
+                            l.append(e)
+                        if(f not in l):
+                            l.append(f)
+                        if(len(l) == 6):
+                            sequences.append(l)
 for i in range(19, 59):
     num = octagonal(i)
     octs.append(num)
@@ -59,43 +81,17 @@ for i in range(32, 99):
 for i in range(45, 141):
     num = triangle(i)
     tris.append(num)
-print("---")
-print(octs)
-print(hepts)
-print(hexes)
-print(pents)
-print(squares)
-print(tris)
-        
-"""This code theoretically checks them all but it takes too long and it doesn't work anyway
-for a in range(10, 100):
-    print(a)
-    for b in range(10, 100):
-        for c in range(10, 100):
-            for d in range(10, 11):
-                for e in range(10, 11):
-                    for f in range(10, 11):
-                        num1 = a*100+b
-                        num2 = b*100+c
-                        num3 = c*100+d
-                        num4 = d*100+e
-                        num5 = e*100+f
-                        num6 = f*100+a
-                        l = [num1, num2, num3, num4, num5, num6]
-                        if(iswhatever(l[0], triangle)):
-                            if(iswhatever(l[1], pentagonal)):
-                                if(iswhatever(l[2], pentagonal)):
-                                    # if(iswhatever(l[3], hexagonal)):
-                                    #    if(iswhatever(l[4], heptagonal)):
-                                    #        if(iswhatever(l[5], octagonal)):
-                                    print(l)
-                        for z in range(5):
-                            l.append(l.pop(0))
-                            if(iswhatever(l[0], triangle)):
-                                if(iswhatever(l[1], pentagonal)):
-                                    if(iswhatever(l[2], pentagonal)):
-                                        # if(iswhatever(l[3], hexagonal)):
-                                        #    if(iswhatever(l[4], heptagonal)):
-                                        #        if(iswhatever(l[5], octagonal)):
-                                        print(l)
-"""
+for sequence in sequences:
+    for a in works[sequence[0]]:
+        for b in works[sequence[1]]:
+            if(a % 100 == int(b/100)):
+                for c in works[sequence[2]]:
+                    if(b % 100 == int(c/100)):
+                        for d in works[sequence[3]]:
+                            if(c % 100 == int(d/100)):
+                                for e in works[sequence[4]]:
+                                    if(d % 100 == int(e/100)):
+                                        for f in works[sequence[5]]:
+                                            if(e % 100 == int(f/100) and f % 100 == int(a/100)):
+                                                print(
+                                                    "Answer:", a+b+c+d+e+f)
