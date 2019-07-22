@@ -35,7 +35,6 @@ def heptagonal(n):  # 21 to 63
 def octagonal(n):  # 19 to 58
     return n*(3*n-2)
 
-
 octs = []
 hepts=[]
 hexes=[]
