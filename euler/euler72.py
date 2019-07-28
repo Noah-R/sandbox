@@ -16,11 +16,11 @@ for a in primes:
     primebuckets[a]=True
 count=0
 for d in range(1, 1000000):
-    if(d in primes):
+    if(primebuckets[d]):
         count+=d-1
     else:
         for n in range(d):
-            if(primebuckets[n] or gcfOfOne(n, d, primes)):
+            if(primebuckets[n] or gcfOfOne(n, d, primes)):#instead of gcf, prime factorize d and then try to evenly divide n by each unique factor
                 count+=1
     if(d%1000==0):
         print(d)
