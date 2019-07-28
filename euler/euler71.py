@@ -1,5 +1,4 @@
 def gcfOfOne(a, b):
-    gcf=1
     for c in range(2, int((b**.5)+1)):
         if(a%c==0 and b%c==0):
             return False
